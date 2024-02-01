@@ -10,7 +10,7 @@ class MenuController extends Controller
     public function index()
     {
         $menu = Menu::orderBy('id', 'asc')->get();
-        return view('menu.index', compact('menu'));
+        return view('menu.index', ['menu' => $menu]);
     }
 
     /**
@@ -43,7 +43,6 @@ class MenuController extends Controller
             'harga' => $request->harga,
             'gambar_barang' => 'gambar/' . $namaFile,
         ]);
-
 
         return redirect()->route('menu.index');
     }
